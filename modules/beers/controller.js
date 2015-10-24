@@ -60,7 +60,7 @@ var Controller = {
                 console.log('Listagem: ', data);
                 msg = data;
             }
-            res.json(msg);
+            res.render('item', {beer: data});
         });
     },
     update: function(req,res){

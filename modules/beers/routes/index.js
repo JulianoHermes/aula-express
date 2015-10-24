@@ -9,4 +9,8 @@ router.get('/', function(req, res, next) {
   //res.render('list', { title: 'Listagem de cervejas' });
 });
 
+router.get('/:id', function(req, res, next) {
+  Controller.get(req, res);
+});
+
 module.exports = router;
