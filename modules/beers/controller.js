@@ -2,16 +2,9 @@ var Model=require('./model');
 
 var Controller = {
     create: function(req,res){
-        res.writeHead(200, {'Content-Type': 'text/plain'});
-        var dados = {
-            name:'Skol',
-            description: 'Mijo de Rato',
-            alcohol: 4.5,
-            price: 3.0,
-            category: 'pilsen'
-        }
+        var dados = req.body
         ,model = new Model(dados)
-        ,msg ='';
+        ,msg = '';
 
         model.save(function(err,data){
             if(err){
@@ -21,7 +14,7 @@ var Controller = {
                 console.log('Cerveja Inserida: ',data);
                 msg = data;
             }
-            res.end(msg);
+            res.json(msg);
         });
     },
     retrieve: function(req,res){
