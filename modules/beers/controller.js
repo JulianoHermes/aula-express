@@ -68,7 +68,7 @@ var Controller = {
         });
     },
     delete: function(req,res){
-        var query={name: /Brahma/i}
+        var query={_id: req.params.id}
         ,msg ='';
 
         Model.remove(query, function(err,data){
