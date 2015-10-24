@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-  Controller.get(req, res);
+  Controller.listItem(req, res);
 });
 
 module.exports = router;

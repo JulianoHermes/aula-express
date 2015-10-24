@@ -60,6 +60,21 @@ var Controller = {
                 console.log('Listagem: ', data);
                 msg = data;
             }
+            res.json(msg);
+        });
+    },
+    listItem: function(req,res){
+        var query={_id: req.params.id}
+        ,msg ='';
+
+        Model.findOne(query, function(err, data){
+            if(err){
+                console.log('Erro: ', err);
+                msg = err;
+            }else{
+                console.log('Listagem: ', data);
+                msg = data;
+            }
             res.render('item', {beer: data});
         });
     },
