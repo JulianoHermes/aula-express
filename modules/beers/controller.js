@@ -32,14 +32,24 @@ var Controller = {
             res.json(msg);
         });
     },
+    get: function(req,res){
+        var query={_id: req.params.id}
+        ,msg ='';
+
+        Model.findOne(query, function(err, data){
+            if(err){
+                console.log('Erro: ', err);
+                msg = err;
+            }else{
+                console.log('Listagem: ', data);
+                msg = data;
+            }
+            res.json(msg);
+        });
+    },
     update: function(req,res){
-        var query={name: /skol/i}
-        ,mod = {
-            name: 'Brahma',
-            alcohol: 4,
-            price: 6,
-            category: 'Pilsen'
-        }
+        var query={_id: req.params.id}
+        ,mod = req.body
         ,optional = {
             upsert:false,
             multi: false
