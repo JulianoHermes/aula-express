@@ -17,6 +17,22 @@ var Controller = {
             res.json(msg);
         });
     },
+    list: function(req,res){
+        var query={}
+        ,msg ='';
+
+        Model.find(query, function(err, data){
+            if(err){
+                console.log('Erro: ', err);
+                msg = err;
+            }else{
+                console.log('Listagem: ', data);
+                msg = data;
+            }
+            res.render('list', { title: 'Listagem de cervejas', 
+                beers: data});
+        });
+    },
     retrieve: function(req,res){
         var query={}
         ,msg ='';
